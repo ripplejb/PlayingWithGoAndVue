@@ -10,7 +10,7 @@ This is a demo application developed using GoLang for backend.
 4. Type "go run main.go".
 
 ## Tips: 
-- Check port number in main.go file. The port number is in the main function.
+- If error occurs, first check port number in main.go file. The port number is in the main function.
 
 ```go
 func main() {
