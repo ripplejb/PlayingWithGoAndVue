@@ -1,7 +1,7 @@
 Vue.component('datacell', {
     delimiters: ['${', '}'],
     props: {
-        widthPercent: Number,
+        widthPercent: String,
         value: String,
         cssClassName: String
     },
@@ -11,37 +11,12 @@ Vue.component('datacell', {
 Vue.component('headercell', {
     delimiters: ['${', '}'],
     props: {
-        widthPercent: Number,
+        widthPercent: String,
         value: String,
         cssClassName: String
     },
     template: '<th :width="widthPercent" :class="cssClassName"> ${value}</th>'
 });
-
-headerinfo =
-[
-    {
-        widthPercent: 40,
-        value: 'Title',
-        cssClassName: 'myheadercell'
-    },
-    {
-        widthPercent: 30,
-        value: 'Author',
-        cssClassName: 'myheadercell'
-    },
-    {
-        widthPercent: 10,
-        value: 'Year',
-        cssClassName: 'myheadercell'
-    },
-    {
-        widthPercent: 20,
-        value: 'ID',
-        cssClassName: 'myheadercell'
-    }
-];
-
 
 var app = new Vue({
     el: '#app',
@@ -49,40 +24,32 @@ var app = new Vue({
     data: {
         searchInput: '',
         searchOutput: {},
-        tableHeaderInfo: headerinfo
+        tableHeaderInfo: {}
     },
     methods: {
-        createDataCellDef(res) {
-            datainfo =
-                [
-                    {
-                        widthPercent: 40,
-                        value: res.Title,
-                        cssClassName: 'mydatacell'
-                    },
-                    {
-                        widthPercent: 30,
-                        value: res.Author,
-                        cssClassName: 'mydatacell'
-                    },
-                    {
-                        widthPercent: 10,
-                        value: res.Year,
-                        cssClassName: 'mydatacell'
-                    },
-                    {
-                        widthPercent: 20,
-                        value: res.ID,
-                        cssClassName: 'mydatacell'
-                    }
-                ];
+        createDataCellDef(results, columnWidths) {
+            var datainfo = [];
+            var i = 0;
+            for(var prop in results) {
+               datainfo.push({value: results[prop], widthPercent: columnWidths[i++], cssClassName: 'mydatacell'})
+            }
             return datainfo;
+        },
+        createHeaderDef(headers, columnWidths) {
+            var headerInfo = [];
+
+            for(var i=0; i < headers.length; i++) {
+                headerInfo.push({value:headers[i], widthPercent: columnWidths[i], cssClassName:'myheadercell'})
+            }
+
+            return headerInfo;
         },
         sendData() {
             this.$http.get('/search?searchInput=' + this.searchInput).then((response) => {
                 this.searchOutput = JSON.parse(response.bodyText);
-                for(let ind in this.searchOutput) {
-                    this.searchOutput[ind]['celldef'] = this.createDataCellDef(this.searchOutput[ind]);
+                this.tableHeaderInfo = this.createHeaderDef(this.searchOutput.Headers, this.searchOutput.ColumnWidths)
+                for(let ind in this.searchOutput.Results) {
+                    this.searchOutput.Results[ind]['celldef'] = this.createDataCellDef(this.searchOutput.Results[ind], this.searchOutput.ColumnWidths);
                 }
             });
         },

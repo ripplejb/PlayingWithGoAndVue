@@ -27,6 +27,12 @@ type SearchResult struct {
 	ID     string `xml:"owi,attr"`
 }
 
+type SearchResultView struct {
+	Results      []SearchResult
+	Headers      []string
+	ColumnWidths []string
+}
+
 type ClassifySearchResponse struct {
 	Results []SearchResult `xml:"works>work"`
 }
@@ -103,9 +109,11 @@ func searchHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 
+	result := SearchResultView{Results: results, Headers: []string{"Title", "Author", "Year", "ID"}, ColumnWidths: []string{"40%", "30%", "10%", "20%"}}
+
 	encoder := json.NewEncoder(w)
 
-	if err := encoder.Encode(results); err != nil {
+	if err := encoder.Encode(result); err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 }
