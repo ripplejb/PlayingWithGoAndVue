@@ -5,12 +5,12 @@ import (
 	"log"
 	"net/http"
 
+	_ "./src/github.com/mattn/go-sqlite3"
 	"database/sql"
 	"encoding/json"
-	_ "github.com/mattn/go-sqlite3"
 
+	"./src/github.com/codegangsta/negroni"
 	"encoding/xml"
-	"github.com/codegangsta/negroni"
 	"io/ioutil"
 	"net/url"
 )
