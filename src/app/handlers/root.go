@@ -1,16 +1,11 @@
 package handlers
 
 import (
-	"app/models"
 	"html/template"
 	"net/http"
 )
 
 func RootHandler(w http.ResponseWriter, r *http.Request) {
-	p := models.Page{Name: "Go Ripal"}
-	if name := r.FormValue("name"); name != "" {
-		p.Name = name
-	}
 
 	responseTemplate := template.Must(template.ParseFiles("templates/main/index.html"))
 
