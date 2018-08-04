@@ -7,16 +7,18 @@ import (
 	"net/url"
 )
 
-func Search(query string) ([]models.SearchResult, error) {
+func Search(query string) (models.SearchResultView, error) {
 	var body []byte
 	var err error
 
 	if body, err = ClassifyAPI("http://classify.oclc.org/classify2/Classify?&summary=true&title=" + url.QueryEscape(query)); err != nil {
-		return []models.SearchResult{}, err
+		return models.SearchResultView{}, err
 	}
 
 	var c models.ClassifySearchResponse
 	err = xml.Unmarshal(body, &c)
 
-	return c.Results, err
+	result := models.SearchResultView{Results: c.Results, Headers: []string{"Title", "Author", "Year", "ID"}, ColumnWidths: []string{"40%", "30%", "10%", "20%"}}
+
+	return result, err
 }
