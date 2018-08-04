@@ -89,13 +89,14 @@
         </table>
         <table class="mydatatable">
             <tbody id="search-result">
-            <tr class="mydatarow" v-for="res in searchOutput.Results" v-on:click="addRowToDB(res)">
+            <tr class="mydatarow" v-for="res in searchOutput.Results" v-on:dblclick="addRowToDB(res)">
                 <td is="datacell" v-for="dc in res.celldef" v-bind="dc"></td>
             </tr>
             </tbody>
         </table>
     </div>
 </div>
+<script src="/assets/js/tableCellComponents.js"></script>
 <script src="/assets/js/index.js"></script>
 </body>
 </html>
