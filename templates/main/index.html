@@ -3,33 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <title>Play Area For Ripal</title>
-    <link rel="stylesheet" type="text/css"
-          href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,500,500i,700,700i" rel="stylesheet">
     <script src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.5.1/vue-resource.min.js">
     </script>
     <style>
 
+        .main-grid-container {
+            display: grid;
+            grid-template-rows: 80px auto;
+        }
+
+        .main-grid-container > .main-grid-row {
+            text-align: center;
+            align-items: center;
+        }
+
         .mydataheaderrow {
             text-align: left;
-            background: #00ad5f;
-            color: #222222;
+            background: #DDE57E;
+            color: #424801;
             height: 25px;
+            font-family: 'Ubuntu', sans-serif;
             font-size: large;
-
         }
 
         .mydatarow {
             text-align: left;
             padding: 5px;
             height: auto;
+            font-weight: 400;
             font-size: large;
-            border: thin solid #00ad5f;
+            font-family: 'Ubuntu', sans-serif;
+            color: #424801;
         }
 
         tr.mydatarow:hover {
-            background-color: black;
-            color: #ffffff;
+            background-color: #424801;
+            color: #DDE57E;
             cursor: pointer;
         }
 
@@ -42,18 +53,16 @@
             width: 100%;
             position: sticky;
             position: -webkit-sticky;
-            top: 0px;
-            background: #00ad5f;
+            top: 0;
+            background: #DDE57E;
             border-collapse: collapse;
         }
 
         .myTableContainer {
-            width: auto;
-            height: 200px;
             overflow: hidden;
-            border: thin solid #00ad5f;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
+            height: 200px;
+            margin: 20px;
+            border: thin solid #424801;
             resize: both;
         }
 
@@ -61,49 +70,60 @@
             width: 100%;
             height: inherit;
             overflow-y: scroll;
+            cursor: default;
         }
 
         .mydatacell {
-            border: thin solid #00ad5f;
+            border: thin solid #424801;
         }
 
         .myheadercell {
-            border: thin solid #00ad5f;
+            border: thin solid #424801;
         }
 
         body {
             padding: 5px;
-            font-family: Ubuntu;
+            font-family: 'Ubuntu', sans-serif;
             font-style: normal;
             font-weight: normal;
+            background: white;
         }
+
+
 
     </style>
 </head>
 <body>
 <div id="app">
-    <div style="margin: 5px; width: 500px">
-        <form id="form-group" onsubmit="return false">
-            <input name="search" v-model="searchInput">
-            <input type="submit" value="Search" v-on:click="sendData">
-        </form>
-    </div>
-    <div class="myTableContainer">
-        <div class="myTable">
-            <table class="myheadertable">
-                <thead>
-                <tr class="mydataheaderrow">
-                    <th is="headercell" v-for="hc in tableHeaderInfo" v-bind="hc"></th>
-                </tr>
-                </thead>
-            </table>
-            <table class="mydatatable">
-                <tbody id="search-result">
-                <tr class="mydatarow" v-for="res in searchOutput.Results" v-on:dblclick="addRowToDB(res)">
-                    <td is="datacell" v-for="dc in res.celldef" v-bind="dc"></td>
-                </tr>
-                </tbody>
-            </table>
+    <div class="main-grid-container">
+        <div class="main-grid-row">
+            <form id="form-group" onsubmit="return false">
+                <input name="search" v-model="searchInput" style="width: 300px; height: 24px;">
+                <input type="submit" value="Search" v-on:click="sendData" style="width: 100px; height: 24px;">
+                <p></p>
+                <label for="bookSearch">Search Books <input type="radio" name="books" id="bookSearch"></label>
+                <label for="stockSearch">Get Stock Information<input type="radio" name="stocks" id="stockSearch"></label>
+            </form>
+        </div>
+        <div class="main-grid-row">
+            <div class="myTableContainer">
+                <div class="myTable">
+                    <table class="myheadertable">
+                        <thead>
+                        <tr class="mydataheaderrow">
+                            <th is="headercell" v-for="hc in tableHeaderInfo" v-bind="hc"></th>
+                        </tr>
+                        </thead>
+                    </table>
+                    <table class="mydatatable">
+                        <tbody id="search-result">
+                        <tr class="mydatarow" v-for="res in searchOutput.Results" v-on:dblclick="addRowToDB(res)">
+                            <td is="datacell" v-for="dc in res.celldef" v-bind="dc"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>
