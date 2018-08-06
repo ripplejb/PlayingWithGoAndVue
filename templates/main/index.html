@@ -4,108 +4,29 @@
     <meta charset="UTF-8">
     <title>Play Area For Ripal</title>
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,500,500i,700,700i" rel="stylesheet">
+    <link href="/assets/css/index.css" rel="stylesheet">
     <script src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.5.1/vue-resource.min.js">
     </script>
-    <style>
-
-        .main-grid-container {
-            display: grid;
-            grid-template-rows: 80px auto;
-        }
-
-        .main-grid-container > .main-grid-row {
-            text-align: center;
-            align-items: center;
-        }
-
-        .mydataheaderrow {
-            text-align: left;
-            background: #DDE57E;
-            color: #424801;
-            height: 25px;
-            font-family: 'Ubuntu', sans-serif;
-            font-size: large;
-        }
-
-        .mydatarow {
-            text-align: left;
-            padding: 5px;
-            height: auto;
-            font-weight: 400;
-            font-size: large;
-            font-family: 'Ubuntu', sans-serif;
-            color: #424801;
-        }
-
-        tr.mydatarow:hover {
-            background-color: #424801;
-            color: #DDE57E;
-            cursor: pointer;
-        }
-
-        .mydatatable {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        .myheadertable {
-            width: 100%;
-            position: sticky;
-            position: -webkit-sticky;
-            top: 0;
-            background: #DDE57E;
-            border-collapse: collapse;
-        }
-
-        .myTableContainer {
-            overflow: hidden;
-            height: 200px;
-            margin: 20px;
-            border: thin solid #424801;
-            resize: both;
-        }
-
-        .myTable {
-            width: 100%;
-            height: inherit;
-            overflow-y: scroll;
-            cursor: default;
-        }
-
-        .mydatacell {
-            border: thin solid #424801;
-        }
-
-        .myheadercell {
-            border: thin solid #424801;
-        }
-
-        body {
-            padding: 5px;
-            font-family: 'Ubuntu', sans-serif;
-            font-style: normal;
-            font-weight: normal;
-            background: white;
-        }
-
-
-
-    </style>
 </head>
 <body>
 <div id="app">
     <div class="main-grid-container">
-        <div class="main-grid-row">
+        <div class="main-grid-row1">
             <form id="form-group" onsubmit="return false">
-                <input name="search" v-model="searchInput" style="width: 300px; height: 24px;">
-                <input type="submit" value="Search" v-on:click="sendData" style="width: 100px; height: 24px;">
-                <p></p>
-                <label for="bookSearch">Search Books <input type="radio" name="books" id="bookSearch"></label>
-                <label for="stockSearch">Get Stock Information<input type="radio" name="stocks" id="stockSearch"></label>
+                <div class="form-group-item1">
+                    <input name="search" v-model="searchInput" style="width: 300px; height: 24px;">
+                    <input type="submit" value="Search" v-on:click="sendData" style="width: 100px; height: 24px;">
+                </div>
+                <div class="form-group-item2">
+                    <input type="radio" name="searchOption" id="bookSearch" value="Books"><label for="bookSearch">Book
+                    Search</label>
+                    <input type="radio" name="searchOption" id="stockSearch" value="Stocks"><label for="stockSearch">Stock
+                    Information</label>
+                </div>
             </form>
         </div>
-        <div class="main-grid-row">
+        <div class="main-grid-row2">
             <div class="myTableContainer">
                 <div class="myTable">
                     <table class="myheadertable">

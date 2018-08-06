@@ -3,6 +3,7 @@ var app = new Vue({
     delimiters: ['${', '}'],
     data: {
         searchInput: '',
+        searchType: '',
         searchOutput: {},
         tableHeaderInfo: {}
     },

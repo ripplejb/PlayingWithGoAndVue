@@ -1,0 +1,103 @@
+.main-grid-container {
+    display: grid;
+    grid-template-areas: 'form form form'
+            'datalist datalist datalist';
+}
+
+.main-grid-row1 {
+    text-align: center;
+    align-items: center;
+    grid-area: form;
+}
+.main-grid-row2 {
+    text-align: center;
+    align-items: center;
+    grid-area: datalist;
+}
+
+#form-group {
+    display: grid;
+    grid-template-areas: 'searchInput'
+        'searchOptionInput';
+    align-items: center;
+}
+
+.form-group-item1 {
+    padding: 5px;
+    grid-area: searchInput;
+}
+
+.form-group-item2 {
+    padding: 5px;
+    grid-area: searchOptionInput;
+}
+
+.mydataheaderrow {
+    text-align: left;
+    background: #DDE57E;
+    color: #424801;
+    height: 25px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: large;
+}
+
+.mydatarow {
+    text-align: left;
+    padding: 5px;
+    height: auto;
+    font-weight: 400;
+    font-size: large;
+    font-family: 'Ubuntu', sans-serif;
+    color: #424801;
+}
+
+tr.mydatarow:hover {
+    background-color: #424801;
+    color: #DDE57E;
+    cursor: pointer;
+}
+
+.mydatatable {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.myheadertable {
+    width: 100%;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    background: #DDE57E;
+    border-collapse: collapse;
+}
+
+.myTableContainer {
+    overflow: hidden;
+    height: 200px;
+    margin: 20px;
+    border: thin solid #424801;
+    resize: both;
+}
+
+.myTable {
+    width: 100%;
+    height: inherit;
+    overflow-y: scroll;
+    cursor: default;
+}
+
+.mydatacell {
+    border: thin solid #424801;
+}
+
+.myheadercell {
+    border: thin solid #424801;
+}
+
+body {
+    padding: 5px;
+    font-family: 'Ubuntu', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    background: white;
+}
