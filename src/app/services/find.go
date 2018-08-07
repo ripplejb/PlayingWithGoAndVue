@@ -10,7 +10,7 @@ import (
 func Find(id string) (models.ClassifyBookResponse, error) {
 	var body []byte
 	var err error
-	if body, err = ClassifyAPI("http://classify.oclc.org/classify2/Classify?&summary=true&owi=" + url.QueryEscape(id)); err != nil {
+	if body, err = RestClientGet("http://classify.oclc.org/classify2/Classify?&summary=true&owi=" + url.QueryEscape(id)); err != nil {
 		return models.ClassifyBookResponse{}, err
 	}
 

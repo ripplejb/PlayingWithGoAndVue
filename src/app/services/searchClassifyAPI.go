@@ -7,11 +7,11 @@ import (
 	"net/url"
 )
 
-func Search(query string) (models.SearchResultView, error) {
+func SearchClassifyAPI(query string) (models.SearchResultView, error) {
 	var body []byte
 	var err error
 
-	if body, err = ClassifyAPI("http://classify.oclc.org/classify2/Classify?&summary=true&title=" + url.QueryEscape(query)); err != nil {
+	if body, err = RestClientGet("http://classify.oclc.org/classify2/Classify?&summary=true&title=" + url.QueryEscape(query)); err != nil {
 		return models.SearchResultView{}, err
 	}
 

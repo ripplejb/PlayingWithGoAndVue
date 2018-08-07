@@ -2,17 +2,22 @@
     display: grid;
     grid-template-areas: 'form form form'
             'datalist datalist datalist';
+    background: #597AC5;
 }
 
 .main-grid-row1 {
     text-align: center;
     align-items: center;
     grid-area: form;
+    margin: 10px;
+    background: #011031;
 }
 .main-grid-row2 {
     text-align: center;
     align-items: center;
     grid-area: datalist;
+    margin: 10px;
+    background: #011031;
 }
 
 #form-group {
@@ -25,11 +30,17 @@
 .form-group-item1 {
     padding: 5px;
     grid-area: searchInput;
+    display: flex;
+    justify-content: center;
 }
 
 .form-group-item2 {
     padding: 5px;
     grid-area: searchOptionInput;
+    text-align: left;
+    color: #D9E558;
+    display: flex;
+    justify-content: center;
 }
 
 .mydataheaderrow {
@@ -75,8 +86,8 @@ tr.mydatarow:hover {
     overflow: hidden;
     height: 200px;
     margin: 20px;
-    border: thin solid #424801;
     resize: both;
+    background: white;
 }
 
 .myTable {
@@ -94,10 +105,96 @@ tr.mydatarow:hover {
     border: thin solid #424801;
 }
 
+input[type=submit] {
+    width: 100px;
+    height: 40px;
+    color: #424801;
+    background: #BDCB23;
+    border: 0;
+}
+input[type=submit]:hover{
+    background: #D9E558;
+ }
+
+input[type=text] {
+    width: 300px;
+    line-height: 40px;
+    background: #DDE57E;
+    color: #424801;
+    border: 0px;
+}
+
+/* The radiocontainer */
+.radiocontainer {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.radiocontainer input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom radio button */
+.radiocheckmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #DDE57E;
+    border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.radiocontainer:hover input ~ .radiocheckmark {
+    background-color: #DDE57E;
+}
+
+/* When the radio button is checked, add a blue background */
+.radiocontainer input:checked ~ .radiocheckmark {
+    background-color: #424801;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.radiocheckmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radiocontainer input:checked ~ .radiocheckmark:after {
+    display: block;
+}
+.radiocontainer > label {
+    text-align: left;
+}
+
+/* Style the indicator (dot/circle) */
+.radiocontainer .radiocheckmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #DDE57E;
+}
+
 body {
     padding: 5px;
     font-family: 'Ubuntu', sans-serif;
     font-style: normal;
     font-weight: normal;
-    background: white;
+    background: #597AC5;
 }

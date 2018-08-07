@@ -12,7 +12,8 @@ func main() {
 
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", RootHandler)
-	mux.HandleFunc("/search", SearchHandler)
+	mux.HandleFunc("/searchbooks", SearchBooksHandler)
+	mux.HandleFunc("/getEarnings", GetEarningsHandler)
 	mux.HandleFunc("/books/add", AddBookHandler)
 	mux.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("templates"))))
 

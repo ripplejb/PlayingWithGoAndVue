@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-func ClassifyAPI(url string) ([]byte, error) {
+func RestClientGet(url string) ([]byte, error) {
 	var resp *http.Response
 	var err error
 

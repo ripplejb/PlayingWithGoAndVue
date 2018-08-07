@@ -15,14 +15,22 @@
         <div class="main-grid-row1">
             <form id="form-group" onsubmit="return false">
                 <div class="form-group-item1">
-                    <input name="search" v-model="searchInput" style="width: 300px; height: 24px;">
-                    <input type="submit" value="Search" v-on:click="sendData" style="width: 100px; height: 24px;">
+                    <div style="width: 500px">
+                    <input type="text" name="search" v-model="searchInput">
+                    <input type="submit" value="Search" v-on:click="sendData">
+                    </div>
                 </div>
                 <div class="form-group-item2">
-                    <input type="radio" name="searchOption" id="bookSearch" value="Books"><label for="bookSearch">Book
-                    Search</label>
-                    <input type="radio" name="searchOption" id="stockSearch" value="Stocks"><label for="stockSearch">Stock
-                    Information</label>
+                    <div style="width: 250px;">
+                    <label class="radiocontainer" for="bookSearch">Book
+                        Search<input type="radio" name="searchOption" id="bookSearch" value="Books" v-model="searchType">
+                        <span class="radiocheckmark"></span>
+                    </label>
+                    <label class="radiocontainer" for="stockSearch">Stock
+                        Information<input type="radio" name="searchOption" id="stockSearch" value="Stocks" v-model="searchType">
+                        <span class="radiocheckmark"></span>
+                    </label>
+                    </div>
                 </div>
             </form>
         </div>
@@ -48,7 +56,7 @@
         </div>
     </div>
 </div>
-<script src="/assets/js/tableCellComponents.js"></script>
+<script src="/assets/js/indexFunctions.js"></script>
 <script src="/assets/js/index.js"></script>
 </body>
 </html>

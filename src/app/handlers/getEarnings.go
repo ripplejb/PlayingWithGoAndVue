@@ -7,11 +7,11 @@ import (
 	"net/http"
 )
 
-func SearchHandler(w http.ResponseWriter, r *http.Request) {
-	var result models.SearchResultView
+func GetEarningsHandler(w http.ResponseWriter, r *http.Request) {
+	var result models.EarningsView
 	var err error
 
-	if result, err = Search(r.URL.Query().Get("searchInput")); err != nil {
+	if result, err = GetEarningsData(r.URL.Query().Get("symbol")); err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 
