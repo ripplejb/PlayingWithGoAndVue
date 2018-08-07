@@ -9,5 +9,6 @@
     <mapping directory="$PROJECT_DIR$/src/github.com/mattn/go-sqlite3" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/src/github.com/pkg/errors" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/src/github.com/timpalpant/go-iex" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/github.com/urfave/negroni" vcs="Git" />
   </component>
 </project>

@@ -1,8 +1,8 @@
 package main
 
 import (
-	"./src/github.com/codegangsta/negroni"
 	_ "./src/github.com/mattn/go-sqlite3"
+	"./src/github.com/urfave/negroni"
 	. "app/handlers"
 	"log"
 	"net/http"
