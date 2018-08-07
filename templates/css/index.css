@@ -98,7 +98,7 @@ tr.mydatarow:hover {
 }
 
 .mydatacell {
-    border: thin solid #424801;
+    border: thin solid #DDE57E;
 }
 
 .myheadercell {
@@ -108,12 +108,13 @@ tr.mydatarow:hover {
 input[type=submit] {
     width: 100px;
     height: 40px;
-    color: #424801;
-    background: #BDCB23;
+    color: #D9E558;
+    background: #424801;
     border: 0;
 }
 input[type=submit]:hover{
     background: #D9E558;
+    color: #424801;
  }
 
 input[type=text] {
