@@ -38,15 +38,15 @@
     padding: 5px;
     grid-area: searchOptionInput;
     text-align: left;
-    color: #D9E558;
+    color: #E1576C;
     display: flex;
     justify-content: center;
 }
 
 .mydataheaderrow {
     text-align: left;
-    background: #DDE57E;
-    color: #424801;
+    background: #E17C8C;
+    color: #45010C;
     height: 25px;
     font-family: 'Ubuntu', sans-serif;
     font-size: large;
@@ -59,12 +59,12 @@
     font-weight: 400;
     font-size: large;
     font-family: 'Ubuntu', sans-serif;
-    color: #424801;
+    color: #45010C;
 }
 
 tr.mydatarow:hover {
-    background-color: #424801;
-    color: #DDE57E;
+    background-color: #45010C;
+    color: #E17C8C;
     cursor: pointer;
 }
 
@@ -78,7 +78,7 @@ tr.mydatarow:hover {
     position: sticky;
     position: -webkit-sticky;
     top: 0;
-    background: #DDE57E;
+    background: #E17C8C;
     border-collapse: collapse;
 }
 
@@ -98,31 +98,29 @@ tr.mydatarow:hover {
 }
 
 .mydatacell {
-    border: thin solid #DDE57E;
+    border: thin solid #E17C8C;
 }
 
 .myheadercell {
-    border: thin solid #424801;
+    border: thin solid #45010C;
 }
 
 input[type=submit] {
     width: 100px;
     height: 40px;
-    color: #D9E558;
-    background: #424801;
     border: 0;
+    background: #E1576C;
+    color: #45010C;
 }
 input[type=submit]:hover{
-    background: #D9E558;
-    color: #424801;
+    color: #E1576C;
+    background: #45010C;
  }
 
 input[type=text] {
     width: 300px;
     line-height: 40px;
-    background: #DDE57E;
-    color: #424801;
-    border: 0px;
+    border: none transparent;
 }
 
 /* The radiocontainer */
@@ -153,18 +151,18 @@ input[type=text] {
     left: 0;
     height: 25px;
     width: 25px;
-    background-color: #DDE57E;
+    background-color: #E17C8C;
     border-radius: 50%;
 }
 
 /* On mouse-over, add a grey background color */
 .radiocontainer:hover input ~ .radiocheckmark {
-    background-color: #DDE57E;
+    background-color: #E17C8C;
 }
 
 /* When the radio button is checked, add a blue background */
 .radiocontainer input:checked ~ .radiocheckmark {
-    background-color: #424801;
+    background-color: #45010C;
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
@@ -189,7 +187,7 @@ input[type=text] {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: #DDE57E;
+    background: #E17C8C;
 }
 
 body {
