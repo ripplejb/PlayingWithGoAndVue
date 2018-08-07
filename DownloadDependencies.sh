@@ -1,6 +1,6 @@
 #!/bin/bash
 export GOPATH=$(pwd)
-echo "Deleting existing ..."
+echo "Delete existing repositories..."
 
 rm -rf $GOPATH/src/github.com
 
