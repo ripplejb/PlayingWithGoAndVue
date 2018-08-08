@@ -12,9 +12,8 @@ func main() {
 
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", RootHandler)
-	mux.HandleFunc("/searchbooks", SearchBooksHandler)
 	mux.HandleFunc("/getEarnings", GetEarningsHandler)
-	mux.HandleFunc("/books/add", AddBookHandler)
+	mux.HandleFunc("/getDividends", GetDividendsHandler)
 	mux.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("templates"))))
 
 	ng := negroni.Classic()

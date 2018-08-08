@@ -12,28 +12,30 @@
 <body>
 <div id="app">
     <div class="main-grid-container">
+        <div class="main-grid-cell1"></div>
         <div class="main-grid-row1">
+            <div class="form-grid-cell1"></div>
             <form id="form-group" onsubmit="return false">
                 <div class="form-group-item1">
-                    <div style="width: 500px">
                     <input type="text" name="search" v-model="searchInput">
-                    <input type="submit" value="Search" v-on:click="sendData">
-                    </div>
+                    <input type="submit" :value="searchButtonValue" v-on:click="sendData" :disabled="isDisabled">
                 </div>
                 <div class="form-group-item2">
                     <div style="width: 250px;">
-                    <label class="radiocontainer" for="bookSearch">Book
-                        Search<input type="radio" name="searchOption" id="bookSearch" value="Books" v-model="searchType">
-                        <span class="radiocheckmark"></span>
-                    </label>
-                    <label class="radiocontainer" for="stockSearch">Stock
-                        Information<input type="radio" name="searchOption" id="stockSearch" value="Stocks" v-model="searchType">
-                        <span class="radiocheckmark"></span>
-                    </label>
+                        <label class="radiocontainer" for="earnings">Stock Earnings<input type="radio" name="searchOption" id="earnings" value="Earnings"
+                                         v-model="searchType">
+                            <span class="radiocheckmark"></span>
+                        </label>
+                        <label class="radiocontainer" for="dividends">Stock Dividends<input type="radio" name="searchOption" id="dividends" value="Dividends"
+                                              v-model="searchType">
+                            <span class="radiocheckmark"></span>
+                        </label>
                     </div>
                 </div>
             </form>
+            <div class="form-grid-cell2"></div>
         </div>
+        <div class="main-grid-cell2"></div>
         <div class="main-grid-row2">
             <div class="myTableContainer">
                 <div class="myTable">

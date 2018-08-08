@@ -7,11 +7,11 @@ import (
 	"net/http"
 )
 
-func SearchBooksHandler(w http.ResponseWriter, r *http.Request) {
-	var result models.SearchResultView
+func GetDividendsHandler(w http.ResponseWriter, r *http.Request) {
+	var result models.DividendsView
 	var err error
 
-	if result, err = SearchClassifyAPI(r.URL.Query().Get("searchInput")); err != nil {
+	if result, err = GetDividendsData(r.URL.Query().Get("symbol")); err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 

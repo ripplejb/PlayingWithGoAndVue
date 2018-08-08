@@ -19,11 +19,14 @@ function createHeaderDef(headers, columnWidths) {
     return headerInfo;
 }
 
-function searchBooks(app) {
-    app.$http.get('/searchbooks?searchInput=' + app.searchInput).then((response) => {
+function getDividends(app) {
+    app.$http.get('/getDividends?symbol=' + app.searchInput).then((response) => {
         app.searchOutput = JSON.parse(response.bodyText);
         app.tableHeaderInfo = createHeaderDef(app.searchOutput.Headers, app.searchOutput.ColumnWidths);
-        for(let ind in app.searchOutput.Results) {
+        Results = [];
+        app.searchOutput['Results'] = Results;
+        for(let ind in app.searchOutput.Dividends) {
+            app.searchOutput.Results.push(app.searchOutput.Dividends[ind]);
             app.searchOutput.Results[ind]['celldef'] = createDataCellDef(app.searchOutput.Results[ind], app.searchOutput.ColumnWidths);
         }
     });
@@ -33,7 +36,7 @@ function getEarnings(app) {
     app.$http.get('/getEarnings?symbol=' + app.searchInput).then((response) => {
         app.searchOutput = JSON.parse(response.bodyText);
         app.tableHeaderInfo = createHeaderDef(app.searchOutput.Headers, app.searchOutput.ColumnWidths);
-        Results = []
+        Results = [];
         app.searchOutput['Results'] = Results;
         for(let ind in app.searchOutput.EarningsData.earnings) {
             app.searchOutput.Results.push(app.searchOutput.EarningsData.earnings[ind]);

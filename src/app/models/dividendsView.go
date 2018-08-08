@@ -1,7 +1,7 @@
 package models
 
-type SearchResultView struct {
-	Results      []SearchResult
+type DividendsView struct {
+	Dividends    []Dividends
 	Headers      []string
 	ColumnWidths []string
 }

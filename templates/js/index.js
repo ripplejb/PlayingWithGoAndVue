@@ -5,24 +5,37 @@ var app = new Vue({
         searchInput: '',
         searchType: '',
         searchOutput: {},
-        tableHeaderInfo: {}
+        tableHeaderInfo: {},
+    },
+    computed: {
+        searchButtonValue: function () {
+            if (this.searchType === 'Earnings' && this.searchInput !== '')
+                return 'Get Earnings';
+            else if (this.searchType === 'Dividends' && this.searchInput !== '')
+                return 'Get Dividends';
+            else
+                return 'Disabled';
+        },
+        isDisabled: function () {
+            return (this.searchType === '' || this.searchInput === '')
+        }
     },
     methods: {
         sendData() {
-            if (this.searchType === "Books")
-                searchBooks(this)
-            else if (this.searchType === "Stocks")
-                getEarnings(this)
+            if (this.searchType === "Earnings")
+                getEarnings(this);
+            else if (this.searchType === "Dividends")
+                getDividends(this);
         },
         addRowToDB(res) {
             if (res == undefined) return;
-            if (this.searchType === "Stocks") {
-                alert("Nothing to do with stocks.")
+            if (this.searchType === "Earnings") {
+                alert("Stock Earnings.");
+                return
+            } else  if (this.searchType === "Dividends") {
+                alert("Stock Dividend.");
                 return
             }
-            this.$http.post('/books/add', res).then((response) => {
-                alert("added the record");
-            });
         }
     }
 });
