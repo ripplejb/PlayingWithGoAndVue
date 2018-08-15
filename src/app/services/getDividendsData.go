@@ -17,7 +17,7 @@ func GetDividendsData(symbol string) (models.DividendsView, error) {
 	var e []models.Dividends
 	err = json.Unmarshal(body, &e)
 
-	result := models.DividendsView{Dividends: e, Headers: []string{"Ex Date", "Payment Date", "Amount", "Indicated", "Flag"}, ColumnWidths: []string{"25%", "25%", "20%", "20%", "10%"}}
+	result := models.DividendsView{Dividends: e, Headers: []string{"Ex StockDate", "Payment StockDate", "Amount", "Indicated", "Flag"}, ColumnWidths: []string{"25%", "25%", "20%", "20%", "10%"}}
 
 	return result, err
 
