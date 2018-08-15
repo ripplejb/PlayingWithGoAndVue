@@ -1,68 +1,58 @@
+
 .main-grid-container {
     display: grid;
-    grid-template-areas: 'emptyarea1 form emptyarea2'
-            'datalist datalist datalist';
-    background: #597AC5;
+    width: 100%;
+    grid-template-columns: 30% 40% 30%;
+    grid-template-rows: repeat(5, 20%);
+    grid-row-gap: 5px;
+    background: #2a2a2a;
+    justify-items: center;
 }
 
 .main-grid-row1 {
-    grid-area: form;
-    margin: 5px;
-    background: #011031;
+    grid-column: 2;
+    grid-row: 1;
     padding: 5px;
-    display: grid;
-    grid-template-areas: 'emptyform1 formgroup emptyform2';
 }
+
 .main-grid-row2 {
-    grid-area: datalist;
-    margin: 5px;
-    background: #011031;
+    width: 100%;
+    grid-column-start: 1;
+    grid-column-end: span 3;
+    grid-row-start: 2;
+    grid-row-end: span 3;
 }
 
-.main-grid-cell1 {
-    grid-area: emptyarea1;
-    background: #597AC5;
-    margin: 5px;
-}
 
-.main-grid-cell2 {
-    grid-area: emptyarea2;
-    background: #597AC5;
-    margin: 5px;
-}
-
-.form-grid-cell1 {
-    grid-area: emptyform1;
-    background: #011031;
-}
-
-.form-grid-cell2 {
-    grid-area: emptyform2;
-    background: #011031;
-}
-
-#form-group {
+.form-grid-3area {
     display: grid;
-    grid-template-areas: 'searchInput'
-        'searchOptionInput';
-    grid-area: formgroup;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
+    justify-items: left;
 }
 
-
-.form-group-item1 {
-    padding: 5px;
-    grid-area: searchInput;
-    display: flex;
+.form-grid-search-row {
     justify-content: center;
+    grid-column-start: 1;
+    grid-column-end: span 2;
+    grid-row: 1;
+    margin: 5px;
 }
 
-.form-group-item2 {
-    padding: 5px;
-    grid-area: searchOptionInput;
-    text-align: left;
+.form-grid-option1 {
+    justify-content: left;
     color: #E1576C;
-    display: flex;
-    justify-content: center;
+    grid-column: 1;
+    grid-row: 2;
+    margin: 5px;
+}
+
+.form-grid-option2 {
+    justify-content: left;
+    color: #E1576C;
+    grid-column: 2;
+    grid-row: 2;
+    margin: 5px;
 }
 
 .mydataheaderrow {
@@ -106,14 +96,14 @@ tr.mydatarow:hover {
 
 .myTableContainer {
     overflow: hidden;
+    width: auto;
     height: 200px;
-    margin: 20px;
-    resize: both;
     background: white;
+    margin: 5px;
 }
 
 .myTable {
-    width: 100%;
+    width: auto;
     height: inherit;
     overflow-y: scroll;
     cursor: default;
@@ -145,7 +135,7 @@ input[type=submit]:disabled{
 }
 
 input[type=text] {
-    width: 300px;
+    width: 200px;
     line-height: 38px;
     font-size: 20px;
     border: none transparent;
@@ -220,9 +210,8 @@ input[type=text] {
 }
 
 body {
-    padding: 5px;
     font-family: 'Ubuntu', sans-serif;
     font-style: normal;
     font-weight: normal;
-    background: #597AC5;
+    background: #2a2a2a;
 }
