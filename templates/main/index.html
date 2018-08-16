@@ -41,24 +41,7 @@
             </form>
         </div>
         <div class="main-grid-row2">
-            <div class="myTableContainer">
-                <div class="myTable">
-                    <table class="myheadertable">
-                        <thead>
-                        <tr class="mydataheaderrow">
-                            <th is="headercell" v-for="hc in tableHeaderInfo" v-bind="hc"></th>
-                        </tr>
-                        </thead>
-                    </table>
-                    <table class="mydatatable">
-                        <tbody id="search-result">
-                        <tr class="mydatarow" v-for="res in searchOutput.Results" v-on:dblclick="addRowToDB(res)">
-                            <td is="datacell" v-for="dc in res.celldef" v-bind="dc"></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+            <datagrid :table-header-info="tableHeaderInfo" :search-output="searchOutput"></datagrid>
         </div>
     </div>
 </div>

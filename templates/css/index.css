@@ -111,10 +111,12 @@ tr.mydatarow:hover {
 
 .mydatacell {
     border: thin solid #E17C8C;
+    overflow: hidden;
 }
 
 .myheadercell {
     border: thin solid #45010C;
+    overflow: hidden;
 }
 
 input[type=submit] {
