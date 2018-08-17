@@ -26,9 +26,45 @@ Vue.component('datagrid', {
 
 Vue.component('dataform', {
     delimiters: ['${', '}'],
-    props: {
-        tableHeaderInfo: Object,
-        searchOutput: Object
+    data: function() {
+        return {
+            searchInput: '',
+            searchType: '',
+            tableHeaderInfo: {},
+            searchOutput: {}
+        }
+    },
+    computed: {
+        searchButtonValue: function () {
+            if (this.searchType === 'Earnings' && this.searchInput !== '')
+                return 'Get Earnings';
+            else if (this.searchType === 'Dividends' && this.searchInput !== '')
+                return 'Get Dividends';
+            else
+                return 'Disabled';
+        },
+        isDisabled: function () {
+            return (this.searchType === '' || this.searchInput === '')
+        }
+    },
+    methods: {
+        sendData() {
+            if (this.searchType === "Earnings")
+                getEarnings(this);
+            else if (this.searchType === "Dividends")
+                getDividends(this);
+            this.$emit('data-received', this.tableHeaderInfo, this.searchOutput);
+        },
+        addRowToDB(res) {
+            if (res === undefined) {
+                return;
+            }
+            if (this.searchType === "Earnings") {
+                alert("Stock Earnings.");
+            } else  if (this.searchType === "Dividends") {
+                alert("Stock Dividend.");
+            }
+        }
     },
     template:
         '            <form id="form-group" onsubmit="return false">\n' +
@@ -63,40 +99,13 @@ var app = new Vue({
     el: '#app',
     delimiters: ['${', '}'],
     data: {
-        searchInput: '',
-        searchType: '',
         searchOutput: {},
         tableHeaderInfo: {},
     },
-    computed: {
-        searchButtonValue: function () {
-            if (this.searchType === 'Earnings' && this.searchInput !== '')
-                return 'Get Earnings';
-            else if (this.searchType === 'Dividends' && this.searchInput !== '')
-                return 'Get Dividends';
-            else
-                return 'Disabled';
-        },
-        isDisabled: function () {
-            return (this.searchType === '' || this.searchInput === '')
-        }
-    },
     methods: {
-        sendData() {
-            if (this.searchType === "Earnings")
-                getEarnings(this);
-            else if (this.searchType === "Dividends")
-                getDividends(this);
-        },
-        addRowToDB(res) {
-            if (res == undefined) return;
-            if (this.searchType === "Earnings") {
-                alert("Stock Earnings.");
-                return
-            } else  if (this.searchType === "Dividends") {
-                alert("Stock Dividend.");
-                return
-            }
+        dataReceived: function (tableHeaderInfo, searchOutput) {
+            this.searchOutput = searchOutput;
+            this.tableHeaderInfo = tableHeaderInfo;
         }
     }
 });

@@ -13,32 +13,7 @@
 <div id="app">
     <div class="main-grid-container">
         <div class="main-grid-row1">
-            <form id="form-group" onsubmit="return false">
-                <div class="form-grid-3area">
-                    <div class="form-grid-search-row">
-                        <input type="text" name="search" v-model="searchInput">
-                        <input type="submit" :value="searchButtonValue" v-on:click="sendData" :disabled="isDisabled">
-                    </div>
-                    <div class="form-grid-option1">
-                        <label class="radiocontainer" for="earnings">Stock Earnings<input type="radio"
-                                                                                          name="searchOption"
-                                                                                          id="earnings"
-                                                                                          value="Earnings"
-                                                                                          v-model="searchType">
-                            <span class="radiocheckmark"></span>
-                        </label>
-                    </div>
-                    <div class="form-grid-option2">
-                        <label class="radiocontainer" for="dividends">Stock Dividends<input type="radio"
-                                                                                            name="searchOption"
-                                                                                            id="dividends"
-                                                                                            value="Dividends"
-                                                                                            v-model="searchType">
-                            <span class="radiocheckmark"></span>
-                        </label>
-                    </div>
-                </div>
-            </form>
+            <dataform @data-received="dataReceived"></dataform>
         </div>
         <div class="main-grid-row2">
             <datagrid :table-header-info="tableHeaderInfo" :search-output="searchOutput"></datagrid>
