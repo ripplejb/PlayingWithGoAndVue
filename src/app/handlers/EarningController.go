@@ -1,16 +1,17 @@
 package handlers
 
 import (
+	"app/models"
 	. "app/services"
 	"encoding/json"
 	"net/http"
 )
 
-func DownloadSymbols(w http.ResponseWriter, r *http.Request) {
-	var result bool
+func GetEarning(w http.ResponseWriter, r *http.Request) {
+	var result models.EarningsView
 	var err error
 
-	if result, err = LoadSymbols(); err != nil {
+	if result, err = GetEarningsData(r.URL.Query().Get("symbol")); err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 

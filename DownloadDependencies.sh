@@ -9,3 +9,9 @@ go get -u -x github.com/urfave/negroni
 
 echo "Downloading go-sqlite3"
 go get -u -x github.com/mattn/go-sqlite3
+
+echo "Downloading Gorilla"
+go get github.com/gorilla/mux
+
+echo "Downloading go-gorp"
+go get github.com/gorilla/mux

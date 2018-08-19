@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 
-func GetDividendsHandler(w http.ResponseWriter, r *http.Request) {
+func GetDividend(w http.ResponseWriter, r *http.Request) {
 	var result models.DividendsView
 	var err error
 

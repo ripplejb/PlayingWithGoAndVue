@@ -20,7 +20,7 @@ function createHeaderDef(headers, columnWidths) {
 }
 
 function getDividends(app) {
-    app.$http.get('/getDividends?symbol=' + app.searchInput).then((response) => {
+    app.$http.get('/Dividend?symbol=' + app.searchInput).then((response) => {
         app.searchOutput = JSON.parse(response.bodyText);
         app.tableHeaderInfo = createHeaderDef(app.searchOutput.Headers, app.searchOutput.ColumnWidths);
         Results = [];
@@ -33,7 +33,7 @@ function getDividends(app) {
 }
 
 function getEarnings(app) {
-    app.$http.get('/getEarnings?symbol=' + app.searchInput).then((response) => {
+    app.$http.get('/Earning?symbol=' + app.searchInput).then((response) => {
         app.searchOutput = JSON.parse(response.bodyText);
         app.tableHeaderInfo = createHeaderDef(app.searchOutput.Headers, app.searchOutput.ColumnWidths);
         Results = [];
