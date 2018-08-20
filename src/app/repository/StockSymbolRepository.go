@@ -6,16 +6,16 @@ import (
 )
 
 func Insert(symbols []models.StockSymbol) error {
-	db, err := GetSqlite3Database()
+	dbmap, err := GetSqlite3Database()
 
 	if err == nil {
-		_, err = db.Exec("delete from StockSymbols")
+		_, err = dbmap.Exec("delete from StockSymbol")
 		if err == nil {
 			for _, element := range symbols {
-				_, err = db.Exec("insert into StockSymbols (Symbol, Name, Date, IsEnabled, Type, IexID) values "+
-					"(?, ?, ?, ?, ?, ?)",
-					element.Symbol, element.Name, element.StockDate,
-					element.IsEnabled, element.StockType, element.IexID)
+				element.ID = -1
+				if err = dbmap.Insert(&element); err == nil {
+					//TODO: Handle error here
+				}
 			}
 		}
 	}

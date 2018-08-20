@@ -1,11 +1,18 @@
 
+:root {
+    --color1-dark: #007730;
+    --color-medium: #228A4C;
+    --color-light: #63DB93;
+    --color-dark-back: #2a2a2a;
+}
+
 .main-grid-container {
     display: grid;
     width: 100%;
     grid-template-columns: 30% 40% 30%;
     grid-template-rows: repeat(5, 20%);
     grid-row-gap: 5px;
-    background: #2a2a2a;
+    background: var(--color-dark-back);
     justify-items: center;
 }
 
@@ -41,7 +48,7 @@
 
 .form-grid-option1 {
     justify-content: left;
-    color: #E1576C;
+    color: var(--color-medium);
     grid-column: 1;
     grid-row: 2;
     margin: 5px;
@@ -49,7 +56,7 @@
 
 .form-grid-option2 {
     justify-content: left;
-    color: #E1576C;
+    color: var(--color-medium);
     grid-column: 2;
     grid-row: 2;
     margin: 5px;
@@ -57,8 +64,8 @@
 
 .mydataheaderrow {
     text-align: left;
-    background: #E17C8C;
-    color: #45010C;
+    background: var(--color-light);
+    color: black;
     height: 25px;
     font-family: 'Ubuntu', sans-serif;
     font-size: large;
@@ -71,12 +78,12 @@
     font-weight: 400;
     font-size: large;
     font-family: 'Ubuntu', sans-serif;
-    color: #45010C;
+    color: var(--color1-dark);
 }
 
 tr.mydatarow:hover {
-    background-color: #45010C;
-    color: #E17C8C;
+    background-color: var(--color1-dark);
+    color: var(--color-light);
     cursor: pointer;
 }
 
@@ -90,7 +97,7 @@ tr.mydatarow:hover {
     position: sticky;
     position: -webkit-sticky;
     top: 0;
-    background: #E17C8C;
+    background: var(--color-light);
     border-collapse: collapse;
 }
 
@@ -110,38 +117,44 @@ tr.mydatarow:hover {
 }
 
 .mydatacell {
-    border: thin solid #E17C8C;
+    border: thin solid var(--color-light);
     overflow: hidden;
 }
 
 .myheadercell {
-    border: thin solid #45010C;
+    border: thin solid var(--color1-dark);
     overflow: hidden;
+    font-weight: 400;
 }
 
 input[type=submit] {
     width: 125px;
     height: 30px;
     border: 0;
-    background: #E1576C;
-    color: #45010C;
+    background: var(--color-medium);
+    color: black;
     font-size: 16px;
 }
 input[type=submit]:hover:enabled{
-    color: #E1576C;
-    background: #45010C;
+    color: var(--color-light);
+    background: var(--color1-dark);
  }
 input[type=submit]:disabled{
-    background: #E1576C;
-    color: #E17C8C;
+    background: var(--color-medium);
+    color: var(--color-light);
 }
 
-input[type=text] {
+input[type=text][type=password] {
     width: 200px;
     height: 32px;
     font-size: 20px;
     border: none transparent;
-    color: #45010C;
+    background: white;
+    color: var(--color-medium);
+}
+
+label, h4 {
+    color: var(--color-light);
 }
 
 /* The radiocontainer */
@@ -178,12 +191,12 @@ input[type=text] {
 
 /* On mouse-over, add a grey background color */
 .radiocontainer:hover input ~ .radiocheckmark {
-    background-color: #E17C8C;
+    background-color: var(--color-light);
 }
 
 /* When the radio button is checked, add a blue background */
 .radiocontainer input:checked ~ .radiocheckmark {
-    background-color: #45010C;
+    background-color: var(--color-medium);
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
@@ -208,12 +221,12 @@ input[type=text] {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: #E17C8C;
+    background: var(--color-light);
 }
 
 body {
     font-family: 'Ubuntu', sans-serif;
     font-style: normal;
     font-weight: normal;
-    background: #2a2a2a;
+    background: var(--color-dark-back);
 }

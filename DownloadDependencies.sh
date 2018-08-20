@@ -15,3 +15,6 @@ go get github.com/gorilla/mux
 
 echo "Downloading go-gorp"
 go get github.com/gorilla/mux
+
+echo "Downloading negroni-sessions"
+go get github.com/GoIncremental/negroni-sessions

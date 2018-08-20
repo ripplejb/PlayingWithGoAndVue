@@ -1,10 +1,12 @@
 package dbproviders
 
 import (
+	"app/models"
 	"database/sql"
+	"github.com/go-gorp/gorp"
 )
 
-func GetSqlite3Database() (*sql.DB, error) {
+func GetSqlite3Database() (*gorp.DbMap, error) {
 
 	var db *sql.DB
 
@@ -12,5 +14,9 @@ func GetSqlite3Database() (*sql.DB, error) {
 
 	err := db.Ping()
 
-	return db, err
+	dbmap := &gorp.DbMap{Db: db, Dialect: gorp.SqliteDialect{}}
+	dbmap.AddTableWithName(models.StockSymbol{}, "StockSymbol").SetKeys(true, "ID")
+	dbmap.CreateTablesIfNotExists()
+
+	return dbmap, err
 }
