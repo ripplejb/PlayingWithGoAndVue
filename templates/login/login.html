@@ -4,24 +4,26 @@
     <meta charset="UTF-8">
     <title>Login</title>
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,500,500i,700,700i" rel="stylesheet">
-    <link href="../css/index.css" rel="stylesheet">
+    <link href="/assets/css/index.css" rel="stylesheet">
 </head>
 <body>
-<form style="display: flex; align-items: center; justify-content: center; flex-flow: column; height: 200px; width: 100%;">
+<form style="display: flex; align-items: center; justify-content: center; flex-flow: column; height: 200px; width: 100%;" action="/login" method="post">
     <div style="display: flex; align-items: center; justify-content: center; flex-flow: column; height: 200px; width: auto;">
         <div style="align-self: flex-start; width:100%; display: flex; justify-content: center;">
             <h4>Please Sign In</h4>
         </div>
-        <div style="align-self: flex-start; width:auto; display: flex; align-items: baseline;">
-            <label for="user-id" style="width: 100px;">User Name: </label><input type="text" name="user-id">
+        <div style="align-self: flex-start; width:auto; display: flex; align-items: baseline; margin-bottom: 5px;">
+            <label for="user-id" style="width: 100px;">User Name: </label><input type="email" name="user-id" required>
         </div>
-        <div style="align-self: flex-start; width: auto; display: flex; align-items: baseline;">
-            <label for="password" style="width: 100px;">Password: </label><input type="password" name="password">
+        <div style="align-self: flex-start; width: auto; display: flex; align-items: baseline; margin-top: 5px;">
+            <label for="password" style="width: 100px;">Password: </label><input type="password" name="password" required>
         </div>
-        <div style="align-self: flex-start; width: 100%; display: flex; justify-content: right; margin-top: 10px;">
+        <div style="align-self: flex-start; width: 100%; display: flex; justify-content: space-evenly; margin-top: 10px;">
+            <input type="button" value="Register">
             <input type="submit" value="Sign In">
         </div>
     </div>
+    <div style="color: red">{{.Error}}</div>
 </form>
 </body>
 </html>

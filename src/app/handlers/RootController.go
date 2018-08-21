@@ -7,10 +7,15 @@ import (
 
 func RootHandler(w http.ResponseWriter, r *http.Request) {
 
-	responseTemplate := template.Must(template.ParseFiles("templates/main/index.html"))
+	//responseTemplate := template.Must(template.ParseFiles("templates/main/index.html"))
+	//
+	//if err := responseTemplate.ExecuteTemplate(w, "index.html", nil); err != nil {
+	//	http.Error(w, err.Error(), http.StatusInternalServerError)
+	//}
 
-	if err := responseTemplate.ExecuteTemplate(w, "index.html", nil); err != nil {
+	responseTemplate := template.Must(template.ParseFiles("templates/login/login.html"))
+
+	if err := responseTemplate.Execute(w, nil); err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
-
 }

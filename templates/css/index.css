@@ -127,7 +127,7 @@ tr.mydatarow:hover {
     font-weight: 400;
 }
 
-input[type=submit] {
+input[type=submit], input[type=button] {
     width: 125px;
     height: 30px;
     border: 0;
@@ -144,7 +144,7 @@ input[type=submit]:disabled{
     color: var(--color-light);
 }
 
-input[type=text][type=password] {
+input[type=text], input[type=password], input[type=email] {
     width: 200px;
     height: 32px;
     font-size: 20px;
