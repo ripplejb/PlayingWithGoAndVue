@@ -16,6 +16,7 @@ func GetSqlite3Database() (*gorp.DbMap, error) {
 
 	dbmap := &gorp.DbMap{Db: db, Dialect: gorp.SqliteDialect{}}
 	dbmap.AddTableWithName(models.StockSymbol{}, "StockSymbol").SetKeys(true, "ID")
+	dbmap.AddTableWithName(models.User{}, "Users").SetKeys(false, "username")
 	dbmap.CreateTablesIfNotExists()
 
 	return dbmap, err

@@ -3,7 +3,7 @@ package services
 import (
 	. "app/clients"
 	"app/models"
-	. "app/repository"
+	"app/repository"
 	"encoding/json"
 )
 
@@ -18,8 +18,9 @@ func LoadSymbols() (bool, error) {
 	var e []models.StockSymbol
 	err = json.Unmarshal(body, &e)
 
+	var repo = repository.StockSymbolRepository{}
 	if len(e) > 0 {
-		err = Insert(e)
+		err = repo.Insert(e)
 	}
 
 	return err == nil, err

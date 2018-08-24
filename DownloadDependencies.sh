@@ -18,3 +18,7 @@ go get github.com/gorilla/mux
 
 echo "Downloading negroni-sessions"
 go get github.com/GoIncremental/negroni-sessions
+
+echo "Downloading bcrypt"
+go get golang.org/x/crypto/bcrypt
+

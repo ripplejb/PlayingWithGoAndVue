@@ -5,7 +5,10 @@ import (
 	"app/models"
 )
 
-func Insert(symbols []models.StockSymbol) error {
+type StockSymbolRepository struct {
+}
+
+func (s *StockSymbolRepository) Insert(symbols []models.StockSymbol) error {
 	dbmap, err := GetSqlite3Database()
 
 	if err == nil {
