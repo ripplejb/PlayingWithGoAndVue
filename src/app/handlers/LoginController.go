@@ -20,7 +20,7 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 			data.Error = "Error while registering the user."
 		}
 	} else if r.FormValue("sign-in") != "" {
-		err := service.Authenticate(user)
+		err := service.Authenticate(r.FormValue("user-id"), r.FormValue("password"))
 		if err != nil {
 			data.Error = "Invalid Login."
 		}

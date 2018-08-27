@@ -9,11 +9,14 @@ import (
 type LoginService struct {
 }
 
-func (ls *LoginService) Authenticate(user models.User) error {
+func (ls *LoginService) Authenticate(userename string, password string) error {
 	repo := &repository.UserRepository{}
+	user := models.User{Username: userename}
+	user.SetSecret(password)
+
 	result, err := repo.Search(user)
 	if err == nil {
-		err = bcrypt.CompareHashAndPassword([]byte(result.Secret), []byte(user.Secret))
+		err = bcrypt.CompareHashAndPassword([]byte(result.Secret), []byte(password))
 	}
 	return err
 }
