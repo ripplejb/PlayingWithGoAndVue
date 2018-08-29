@@ -21,10 +21,12 @@ func (u *UserRepository) Search(user models.User) (models.User, error) {
 	dbmap, err := GetSqlite3Database()
 
 	if err == nil {
-		var result models.User
-		err = dbmap.SelectOne(&result, "select * from Users where username=?", user.Username)
-		return result, err
+		if found, err := dbmap.Get(models.User{}, user.Username); err == nil {
+			result, ok := found.(models.User)
+			if ok {
+				return result, err
+			}
+		}
 	}
-
 	return models.User{}, err
 }
