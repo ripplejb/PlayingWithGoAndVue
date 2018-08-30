@@ -5,25 +5,13 @@
     <title>Login</title>
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,500,500i,700,700i" rel="stylesheet">
     <link href="/assets/css/index.css" rel="stylesheet">
+    <script src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.5.1/vue-resource.min.js">
+    </script>
 </head>
 <body>
-<form style="display: flex; align-items: center; justify-content: center; flex-flow: column; height: 200px; width: 100%;" action="/login" method="post">
-    <div style="display: flex; align-items: center; justify-content: center; flex-flow: column; height: 200px; width: auto;">
-        <div style="align-self: flex-start; width:100%; display: flex; justify-content: center;">
-            <h4>Please Sign In</h4>
-        </div>
-        <div style="align-self: flex-start; width:auto; display: flex; align-items: baseline; margin-bottom: 5px;">
-            <label for="user-id" style="width: 100px;">User Name: </label><input type="email" name="user-id" required>
-        </div>
-        <div style="align-self: flex-start; width: auto; display: flex; align-items: baseline; margin-top: 5px;">
-            <label for="password" style="width: 100px;">Password: </label><input type="password" name="password" required>
-        </div>
-        <div style="align-self: flex-start; width: 100%; display: flex; justify-content: space-evenly; margin-top: 10px;">
-            <input type="submit" name="register" value="Register">
-            <input type="submit" name="sign-in" value="Sign In">
-        </div>
+    <div id="loginApp">
     </div>
-    <div style="color: red">{{.Error}}</div>
-</form>
+    <script src="/assets/js/login.js"></script>
 </body>
 </html>

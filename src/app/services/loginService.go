@@ -26,3 +26,13 @@ func (ls *LoginService) Register(user models.User) error {
 	err := repo.Insert(user)
 	return err
 }
+
+func (ls *LoginService) CheckUserAvailability(username string) (bool, error) {
+	repo := &repository.UserRepository{}
+	result, err := repo.Search(models.User{Username: username})
+
+	if err != nil {
+		return false, err
+	}
+	return result.Username == username, nil
+}

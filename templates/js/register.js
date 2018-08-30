@@ -8,10 +8,10 @@ var registerApp = new Vue({
         error: ''
     },
     template:
-        '<form style="display: flex; align-items: center; justify-content: center; flex-flow: column; height: 250px; width: 100%;">\n' +
+        '<form style="display: flex; align-items: center; justify-content: center; flex-flow: column; height: 350px; width: 100%;">\n' +
         '    <div style="display: flex; align-items: center; justify-content: center; flex-flow: column; height: 200px; width: auto;">\n' +
         '        <div style="align-self: flex-start; width:100%; display: flex; justify-content: center;">\n' +
-        '            <h4>Please Sign In</h4>\n' +
+        '            <h4>Register New User</h4>\n' +
         '        </div>\n' +
         '        <div style="align-self: flex-start; width:auto; display: flex; align-items: baseline; ">\n' +
         '            <label for="user-id" style="width: 100px;">Email: </label><input type="email" ref="email" name="user-id" v-model="username" required>\n' +
@@ -40,8 +40,16 @@ var registerApp = new Vue({
             if (this.password1 !== this.password2) {
                 this.error = 'password do not match';
                 this.$refs.password1.focus();
-
+                return;
             }
+            this.$http.post('/register', {"username": this.username, "password": this.password2},
+                function (data, status, request) {
+                    if (data)
+                        window.location.href = '/login-ui';
+                    else
+                        this.error = 'error creating new user'
+                });
+
         },
 
     }
