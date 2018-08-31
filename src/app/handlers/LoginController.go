@@ -10,29 +10,19 @@ import (
 
 func LoginHandler(w http.ResponseWriter, r *http.Request) {
 
-	service := services.LoginService{}
-	data := struct{ Error string }{""}
+	decoder := json.NewDecoder(r.Body)
+	var userui models.UserUi
+	err := decoder.Decode(&userui)
 
-	if r.FormValue("register") != "" {
-		http.Redirect(w, r, "/register-ui", 301)
-	} else if r.FormValue("sign-in") != "" {
-		err := service.Authenticate(r.FormValue("user-id"), r.FormValue("password"))
-		if err != nil {
-			data.Error = "Invalid Login."
-		}
-	}
-
-	if data.Error != "" {
-		responseTemplate := template.Must(template.ParseFiles("templates/login/login.html"))
-
-		if err := responseTemplate.Execute(w, data); err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
+	if err != nil {
+		http.Error(w, "Invalid data", http.StatusInternalServerError)
 	} else {
-		http.Redirect(w, r, "/", 301)
-
+		service := services.LoginService{}
+		err := service.Authenticate(userui.Username, userui.Password)
+		if err != nil {
+			http.Error(w, "Invalid user/password", http.StatusInternalServerError)
+		}
 	}
-
 }
 
 func LoginUIHandler(w http.ResponseWriter, r *http.Request) {

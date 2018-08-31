@@ -42,13 +42,14 @@ var registerApp = new Vue({
                 this.$refs.password1.focus();
                 return;
             }
-            this.$http.post('/register', {"username": this.username, "password": this.password2},
-                function (data, status, request) {
-                    if (data)
+            this.$http.post('/register', {"username": this.username, "password": this.password2})
+                .then(
+                    response => {
                         window.location.href = '/login-ui';
-                    else
+                    },
+                    response => {
                         this.error = 'error creating new user'
-                });
+                    });
 
         },
 

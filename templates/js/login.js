@@ -12,7 +12,13 @@ var loginApp = new Vue({
         },
 
         login: function (event) {
-            this.error = "login"
+            this.$http.post('/login', {"username": this.username, "password": this.password2}).then(
+                response => {
+                    this.error = response.toString()
+                },
+                response => {
+                    this.error = response.body;
+                });
         }
     },
     template: '<form style="display: flex; align-items: center; justify-content: center; flex-flow: column; height: 200px; width: 100%;">\n' +
@@ -31,6 +37,6 @@ var loginApp = new Vue({
         '            <input type="button" name="sign-in" value="Sign In" v-on:click="login">\n' +
         '        </div>\n' +
         '    </div>\n' +
-        '    <div style="color: red">${error}</div>\n' +
+        '    <div style="color: red; margin-top: 10px;">${error}</div>\n' +
         '</form>\n'
 });
