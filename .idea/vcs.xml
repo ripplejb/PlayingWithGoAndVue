@@ -14,6 +14,7 @@
     <mapping directory="$PROJECT_DIR$/src/github.com/goincremental/dal" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/src/github.com/goincremental/negroni-sessions" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/src/github.com/gomodule/redigo" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/github.com/google/uuid" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/src/github.com/gorilla/context" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/src/github.com/gorilla/mux" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/src/github.com/gorilla/securecookie" vcs="Git" />

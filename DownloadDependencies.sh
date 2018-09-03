@@ -14,10 +14,10 @@ echo "Downloading Gorilla"
 go get github.com/gorilla/mux
 
 echo "Downloading go-gorp"
-go get github.com/gorilla/mux
+go get github.com/go-gorp/gorp
 
-echo "Downloading negroni-sessions"
-go get github.com/GoIncremental/negroni-sessions
+echo "Download Gorilla Sessions"
+go get github.com/gorilla/sessions
 
 echo "Downloading bcrypt"
 go get golang.org/x/crypto/bcrypt

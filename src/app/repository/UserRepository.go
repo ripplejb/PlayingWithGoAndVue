@@ -22,9 +22,9 @@ func (u *UserRepository) Search(user models.User) (models.User, error) {
 
 	if err == nil {
 		if found, err := dbmap.Get(models.User{}, user.Username); err == nil {
-			result, ok := found.(models.User)
+			result, ok := found.(*models.User)
 			if ok {
-				return result, err
+				return *result, err
 			}
 		}
 	}
