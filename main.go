@@ -9,10 +9,7 @@ import (
 )
 
 func main() {
-
 	ng := negroni.Classic()
-	//store := cookiestore.New([]byte("secrete123"))
-	//ng.Use(sessions.Sessions("go-for-stock", store))
 	ng.UseHandler(configuration.GetRouter())
 	ng.Run(":8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))
