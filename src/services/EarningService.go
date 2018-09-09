@@ -1,16 +1,21 @@
 package services
 
 import (
-	. "app/clients"
-	"app/models"
+	"clients"
+	"context"
 	"encoding/json"
+	"models"
 )
 
-func GetEarningsData(symbol string) (models.EarningsView, error) {
+type EarningService struct {
+}
+
+func (es *EarningService) GetEarningsData(context context.Context, symbol string) (models.EarningsView, error) {
 	var body []byte
 	var err error
 
-	if body, err = RestClientGet("https://api.iextrading.com/1.0/stock/" + symbol + "/earnings"); err != nil {
+	client := clients.Client{}
+	if body, err = client.RestClientGet(context, "https://api.iextrading.com/1.0/stock/"+symbol+"/earnings"); err != nil {
 		return models.EarningsView{}, err
 	}
 

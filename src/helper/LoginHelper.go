@@ -1,8 +1,8 @@
 package helper
 
 import (
-	"app/models"
 	"github.com/gorilla/sessions"
+	"models"
 	"net/http"
 	"strings"
 )

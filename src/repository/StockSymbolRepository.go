@@ -1,15 +1,16 @@
 package repository
 
 import (
-	. "app/dbproviders"
-	"app/models"
+	"PlayingWithGoAndVue/src/dbproviders"
+	"models"
 )
 
 type StockSymbolRepository struct {
 }
 
 func (s *StockSymbolRepository) Insert(symbols []models.StockSymbol) error {
-	dbmap, err := GetSqlite3Database()
+	provider := dbproviders.Sqlite3Provider{}
+	dbmap, err := provider.GetSqlite3Database()
 
 	if err == nil {
 		_, err = dbmap.Exec("delete from StockSymbol")

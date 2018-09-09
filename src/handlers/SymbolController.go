@@ -1,8 +1,9 @@
 package handlers
 
 import (
-	. "app/services"
+	"PlayingWithGoAndVue/src/services"
 	"encoding/json"
+	"google.golang.org/appengine"
 	"net/http"
 )
 
@@ -10,7 +11,8 @@ func Import(w http.ResponseWriter, r *http.Request) {
 	var result bool
 	var err error
 
-	if result, err = LoadSymbols(); err != nil {
+	symbolService := services.SymbolService{}
+	if result, err = symbolService.Import(appengine.NewContext(r)); err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 

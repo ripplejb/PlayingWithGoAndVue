@@ -1,9 +1,9 @@
 package services
 
 import (
-	"app/models"
-	"app/repository"
 	"golang.org/x/crypto/bcrypt"
+	"models"
+	"repository"
 )
 
 type LoginService struct {

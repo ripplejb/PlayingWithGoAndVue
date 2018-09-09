@@ -1,9 +1,10 @@
 package handlers
 
 import (
-	"app/models"
-	. "app/services"
+	"PlayingWithGoAndVue/src/services"
 	"encoding/json"
+	"google.golang.org/appengine"
+	"models"
 	"net/http"
 )
 
@@ -11,7 +12,8 @@ func GetEarning(w http.ResponseWriter, r *http.Request) {
 	var result models.EarningsView
 	var err error
 
-	if result, err = GetEarningsData(r.URL.Query().Get("symbol")); err != nil {
+	earningService := services.EarningService{}
+	if result, err = earningService.GetEarningsData(appengine.NewContext(r), r.URL.Query().Get("symbol")); err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 

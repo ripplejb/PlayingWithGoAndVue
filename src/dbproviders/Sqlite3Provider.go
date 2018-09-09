@@ -1,12 +1,15 @@
 package dbproviders
 
 import (
-	"app/models"
 	"database/sql"
 	"github.com/go-gorp/gorp"
+	"models"
 )
 
-func GetSqlite3Database() (*gorp.DbMap, error) {
+type Sqlite3Provider struct {
+}
+
+func (sp *Sqlite3Provider) GetSqlite3Database() (*gorp.DbMap, error) {
 
 	var db *sql.DB
 

@@ -1,12 +1,12 @@
 package handlers
 
 import (
-	"app/helper"
-	"app/models"
-	"app/services"
 	"encoding/json"
+	"helper"
 	"html/template"
+	"models"
 	"net/http"
+	"services"
 )
 
 func LoginHandler(w http.ResponseWriter, r *http.Request) {
@@ -39,7 +39,7 @@ func LoginUIHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	responseTemplate := template.Must(template.ParseFiles("templates/login/login.html"))
+	responseTemplate := template.Must(template.ParseFiles("../app/templates/login/login.html"))
 
 	if err := responseTemplate.Execute(w, nil); err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -47,7 +47,7 @@ func LoginUIHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func RegisterUIHandler(w http.ResponseWriter, r *http.Request) {
-	responseTemplate := template.Must(template.ParseFiles("templates/register/register.html"))
+	responseTemplate := template.Must(template.ParseFiles("../app/templates/register/register.html"))
 
 	if err := responseTemplate.Execute(w, nil); err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)

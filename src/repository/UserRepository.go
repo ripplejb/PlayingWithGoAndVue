@@ -1,15 +1,16 @@
 package repository
 
 import (
-	. "app/dbproviders"
-	"app/models"
+	"dbproviders"
+	"models"
 )
 
 type UserRepository struct {
 }
 
 func (u *UserRepository) Insert(user models.User) error {
-	dbmap, err := GetSqlite3Database()
+	provider := dbproviders.Sqlite3Provider{}
+	dbmap, err := provider.GetSqlite3Database()
 
 	if err == nil {
 		err = dbmap.Insert(&user)
@@ -18,7 +19,8 @@ func (u *UserRepository) Insert(user models.User) error {
 }
 
 func (u *UserRepository) Search(user models.User) (models.User, error) {
-	dbmap, err := GetSqlite3Database()
+	provider := dbproviders.Sqlite3Provider{}
+	dbmap, err := provider.GetSqlite3Database()
 
 	if err == nil {
 		if found, err := dbmap.Get(models.User{}, user.Username); err == nil {

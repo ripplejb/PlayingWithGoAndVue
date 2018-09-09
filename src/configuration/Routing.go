@@ -1,12 +1,15 @@
 package configuration
 
 import (
-	"app/handlers"
 	"github.com/gorilla/mux"
+	"handlers"
 	"net/http"
 )
 
-func GetRouter() *mux.Router {
+type RoutingConfiguration struct {
+}
+
+func (rc *RoutingConfiguration) GetRouter() *mux.Router {
 	mux := mux.NewRouter()
 	mux.HandleFunc("/", handlers.RootHandler).Methods("GET")
 	mux.HandleFunc("/Earning", handlers.GetEarning).Methods("GET")
@@ -17,9 +20,9 @@ func GetRouter() *mux.Router {
 	mux.HandleFunc("/register-ui", handlers.RegisterUIHandler).Methods("GET")
 	mux.HandleFunc("/register", handlers.RegisterHandler).Methods("POST")
 	mux.HandleFunc("/check-username", handlers.UsernameAvailability).Methods("GET")
-	mux.PathPrefix("/assets/").Handler(http.StripPrefix("/assets/", http.FileServer(http.Dir("./templates/"))))
+	mux.PathPrefix("/static").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 	mux.HandleFunc("/favicon.ico", func(writer http.ResponseWriter, request *http.Request) {
-		http.ServeFile(writer, request, "./templates/favicon.ico")
+		http.ServeFile(writer, request, "./static/favicon.ico")
 	})
 
 	return mux
