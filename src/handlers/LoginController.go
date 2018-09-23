@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"encoding/json"
+	"google.golang.org/appengine"
 	"helper"
 	"html/template"
 	"models"
@@ -39,7 +40,7 @@ func LoginUIHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	responseTemplate := template.Must(template.ParseFiles("../app/templates/login/login.html"))
+	responseTemplate := template.Must(template.ParseFiles("./static/login/login.html"))
 
 	if err := responseTemplate.Execute(w, nil); err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -78,7 +79,7 @@ func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 		user := models.User{Username: userUI.Username}
 		user.SetSecret(userUI.Password)
 		service := services.LoginService{}
-		err := service.Register(user)
+		err := service.Register(&user)
 		if err != nil {
 			http.Error(w, "Error registering the user", http.StatusInternalServerError)
 		}
@@ -102,7 +103,7 @@ func VerifyUser(w http.ResponseWriter, r *http.Request, next http.HandlerFunc) {
 	}
 
 	if username := loginHelper.GetSessionValues(r); username != "" {
-		loginService := services.LoginService{}
+		loginService := services.LoginService{appengine.NewContext(r)}
 		if ok, _ := loginService.CheckUserAvailability(username); ok {
 			next(w, r)
 			return

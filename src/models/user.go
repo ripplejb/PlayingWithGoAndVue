@@ -5,6 +5,8 @@ import "golang.org/x/crypto/bcrypt"
 type User struct {
 	Username string `json:"username" db:"username"`
 	Secret   []byte `db:"secret"`
+	Name     string `json:"Name" db:"Name"`
+	Email    string `json:"email" db:"Email"`
 }
 
 func (u *User) SetSecret(value string) {

@@ -14,7 +14,6 @@ func (rc *RoutingConfiguration) GetRouter() *mux.Router {
 	mux.HandleFunc("/", handlers.RootHandler).Methods("GET")
 	mux.HandleFunc("/Earning", handlers.GetEarning).Methods("GET")
 	mux.HandleFunc("/Dividend", handlers.GetDividend).Methods("GET")
-	mux.HandleFunc("/dd44c44a-590f-4fba-bae0-aced5131fcd7/Import", handlers.Import).Methods("GET")
 	mux.HandleFunc("/login", handlers.LoginHandler).Methods("POST")
 	mux.HandleFunc("/login-ui", handlers.LoginUIHandler).Methods("GET")
 	mux.HandleFunc("/register-ui", handlers.RegisterUIHandler).Methods("GET")

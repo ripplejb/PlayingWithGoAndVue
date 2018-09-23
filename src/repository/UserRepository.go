@@ -1,34 +1,21 @@
 package repository
 
 import (
-	"dbproviders"
+	"dataaccesslayer"
 	"models"
 )
 
 type UserRepository struct {
+	UserDB dataaccesslayer.IUserDB
 }
 
-func (u *UserRepository) Insert(user models.User) error {
-	provider := dbproviders.Sqlite3Provider{}
-	dbmap, err := provider.GetSqlite3Database()
-
-	if err == nil {
-		err = dbmap.Insert(&user)
-	}
+func (u *UserRepository) Insert(user *models.User) error {
+	err := u.UserDB.Add(user)
 	return err
 }
 
-func (u *UserRepository) Search(user models.User) (models.User, error) {
-	provider := dbproviders.Sqlite3Provider{}
-	dbmap, err := provider.GetSqlite3Database()
+func (u *UserRepository) Search(user *models.User) (models.User, error) {
+	usr, err := u.UserDB.Get(user.Username)
 
-	if err == nil {
-		if found, err := dbmap.Get(models.User{}, user.Username); err == nil {
-			result, ok := found.(*models.User)
-			if ok {
-				return *result, err
-			}
-		}
-	}
-	return models.User{}, err
+	return usr, err
 }
