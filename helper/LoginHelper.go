@@ -20,10 +20,8 @@ func (lh *LoginHelper) GetSessionValues(r *http.Request) string {
 	var userName string
 
 	if session, err := store.Get(r, sessionName); err == nil {
-		if session.IsNew {
-			if val := session.Values["user"]; val != nil {
-				userName = val.(string)
-			}
+		if val := session.Values["user"]; val != nil {
+			userName = val.(string)
 		}
 	}
 
