@@ -43,7 +43,7 @@ However, to run on any other platform, please make sure you download all the dep
 | Installed     | kubectl                                              | kubectl                  |   < 1 MiB |
 
 
-4. Download the project to ~go/src/ folder.
+4. Download the project to ~go/src/ or $GOPATH/src/ folder
 5. Go to the folder and open terminal/command prompt.
 6. To download dependecies, run "./DownloadDependencies.sh"
 7. To run the application go to the **main** folder and run "dev_appserver.py app.yaml" on terminal.
