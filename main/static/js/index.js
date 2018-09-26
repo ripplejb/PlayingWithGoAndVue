@@ -53,7 +53,6 @@ Vue.component('dataform', {
                 getEarnings(this);
             else if (this.searchType === "Dividends")
                 getDividends(this);
-            this.$emit('data-received', this.tableHeaderInfo, this.searchOutput);
         },
         addRowToDB(res) {
             if (res === undefined) {

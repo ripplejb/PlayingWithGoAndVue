@@ -29,6 +29,7 @@ function getDividends(app) {
             app.searchOutput.Results.push(app.searchOutput.Dividends[ind]);
             app.searchOutput.Results[ind]['celldef'] = createDataCellDef(app.searchOutput.Results[ind], app.searchOutput.ColumnWidths);
         }
+        app.$emit('data-received', app.tableHeaderInfo, app.searchOutput);
     });
 }
 
@@ -42,6 +43,7 @@ function getEarnings(app) {
             app.searchOutput.Results.push(app.searchOutput.EarningsData.earnings[ind]);
             app.searchOutput.Results[ind]['celldef'] = createDataCellDef(app.searchOutput.EarningsData.earnings[ind], app.searchOutput.ColumnWidths);
         }
+        app.$emit('data-received', app.tableHeaderInfo, app.searchOutput);
     });
 }
 
