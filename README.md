@@ -6,8 +6,6 @@ This instructions assume that you are using Ubuntu Linux.
 This application runs on google app engine standard. 
 
 However, to run on any other platform, please make sure you download all the dependencies. Please see the **DownloadDependecy.sh** for the full list of required package. 
-The SQLITE3 driver is not compatible with windows. 
-The solutions is to, use MinGW gcc (windows XP or later).
 
 1. Install GoLang 1.9+.
 2. Install Google App Engine SDKs for golang. See instructions here https://cloud.google.com/appengine/docs/standard/go/download
@@ -48,7 +46,7 @@ The solutions is to, use MinGW gcc (windows XP or later).
 4. Download the project to ~go/src/ folder.
 5. Go to the folder and open terminal/command prompt.
 6. To download dependecies, run "./DownloadDependencies.sh"
-7. To run the application, "dev_appserver.py app.yaml".
+7. To run the application go to the **main** folder and run "dev_appserver.py app.yaml" on terminal.
 
 
 ## Tips: 
