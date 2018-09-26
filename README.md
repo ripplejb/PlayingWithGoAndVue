@@ -9,7 +9,8 @@ However, to run on any other platform, please make sure you download all the dep
 
 1. Install GoLang 1.9+.
 2. Install Google App Engine SDKs for golang. See instructions here https://cloud.google.com/appengine/docs/standard/go/download
-3. When you run 
+3. Setup google cloud project. Please go through the instructions in above mentioned link.
+4. When you run
    ```bash
      gcloud components list
    ```
@@ -43,10 +44,14 @@ However, to run on any other platform, please make sure you download all the dep
 | Installed     | kubectl                                              | kubectl                  |   < 1 MiB |
 
 
-4. Download the project to ~go/src/ or $GOPATH/src/ folder
-5. Go to the folder and open terminal/command prompt.
-6. To download dependecies, run "./DownloadDependencies.sh"
-7. To run the application go to the **main** folder and run "dev_appserver.py app.yaml" on terminal.
+5. Download the project to ~go/src/ or $GOPATH/src/ folder
+6. Go to the folder and open terminal/command prompt.
+7. To download dependecies, run "./DownloadDependencies.sh"
+8. To run the application go to the **main** folder and run "dev_appserver.py app.yaml" on terminal.
+9. To deploy the app on Google App Engine Standard, goto the **main** folder of the project and run the command below.
+   ```bash
+   gcloud app deploy
+   ```
 
 
 ## Tips: 
