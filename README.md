@@ -16,9 +16,9 @@ The solutions is to, use MinGW gcc (windows XP or later).
      gcloud components list
    ```
    Output should be
-|-------------------------------------------------------------------------------------------------------------|
-|                                                  Components                                                 |
-|---------------|------------------------------------------------------|--------------------------|-----------|
+
+#### Components    
+
 |     Status    |                         Name                         |            ID            |    Size   |
 |---------------|------------------------------------------------------|--------------------------|-----------|
 | Not Installed | Cloud Bigtable Command Line Tool                     | cbt                      |   6.4 MiB |
@@ -43,7 +43,7 @@ The solutions is to, use MinGW gcc (windows XP or later).
 | Installed     | gcloud Beta Commands                                 | beta                     |   < 1 MiB |
 | Installed     | gcloud app Python Extensions                         | app-engine-python        |   6.2 MiB |
 | Installed     | kubectl                                              | kubectl                  |   < 1 MiB |
-|---------------|------------------------------------------------------|--------------------------|-----------|
+
 
 4. Download the project to ~go/src/ folder.
 5. Go to the folder and open terminal/command prompt.
@@ -52,13 +52,5 @@ The solutions is to, use MinGW gcc (windows XP or later).
 
 
 ## Tips: 
-- If error occurs, first check port number in main.go file. The port number is in the main function.
-
-```go
-func main() {
-   ...
-   ng.Run(":8080")
-   ...
-}
-```
+- App engine runs on port 8080 in development environment.
 - Still don't work, create issue.
