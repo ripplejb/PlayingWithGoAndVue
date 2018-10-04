@@ -19,7 +19,7 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		http.Error(w, "Invalid data", http.StatusInternalServerError)
 	} else {
-		service := services.LoginService{appengine.NewContext(r)}
+		service := services.LoginService{Context: appengine.NewContext(r)}
 		err := service.Authenticate(userUI.Username, userUI.Password)
 		if err != nil {
 			http.Error(w, "Invalid user/password", http.StatusInternalServerError)
@@ -56,7 +56,7 @@ func RegisterUIHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func UsernameAvailability(w http.ResponseWriter, r *http.Request) {
-	service := services.LoginService{appengine.NewContext(r)}
+	service := services.LoginService{Context: appengine.NewContext(r)}
 
 	result, err := service.CheckUserAvailability(r.URL.Query().Get("username"))
 
@@ -78,7 +78,7 @@ func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 	if err == nil {
 		user := models.User{Username: userUI.Username}
 		user.SetSecret(userUI.Password)
-		service := services.LoginService{appengine.NewContext(r)}
+		service := services.LoginService{Context: appengine.NewContext(r)}
 		err := service.Register(&user)
 		if err != nil {
 			http.Error(w, "Error registering the user", http.StatusInternalServerError)
@@ -103,7 +103,7 @@ func VerifyUser(w http.ResponseWriter, r *http.Request, next http.HandlerFunc) {
 	}
 
 	if username := loginHelper.GetSessionValues(r); username != "" {
-		loginService := services.LoginService{appengine.NewContext(r)}
+		loginService := services.LoginService{Context: appengine.NewContext(r)}
 		if ok, _ := loginService.CheckUserAvailability(username); ok {
 			next(w, r)
 			return
