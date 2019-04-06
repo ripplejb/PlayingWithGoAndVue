@@ -4,7 +4,6 @@ import (
 	"PlayingWithGoAndVue/models"
 	"PlayingWithGoAndVue/services"
 	"encoding/json"
-	"google.golang.org/appengine"
 	"net/http"
 )
 
@@ -13,7 +12,7 @@ func GetDividend(w http.ResponseWriter, r *http.Request) {
 	var err error
 
 	dividendService := services.DividendService{}
-	if result, err = dividendService.GetDividendsData(appengine.NewContext(r), r.URL.Query().Get("symbol")); err != nil {
+	if result, err = dividendService.GetDividendsData(r.URL.Query().Get("symbol")); err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 

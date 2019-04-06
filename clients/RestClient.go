@@ -1,22 +1,26 @@
 package clients
 
 import (
-	"context"
-	"google.golang.org/appengine/urlfetch"
 	"io/ioutil"
 	"net/http"
 )
 
 type Client struct {
+	client *http.Client
 }
 
-func (cl *Client) RestClientGet(context context.Context, url string) ([]byte, error) {
+func (cl *Client) RestClientGet(url string) ([]byte, error) {
 
 	var resp *http.Response
-	var err error
-	client := urlfetch.Client(context)
-	if resp, err = client.Get(url); err != nil {
+	if req, err := http.NewRequest("GET", url, nil); err != nil {
 		return []byte{}, err
+	} else {
+		if cl.client == nil {
+			cl.client = &http.Client{}
+		}
+		if resp, err = cl.client.Do(req); err != nil {
+			return []byte{}, err
+		}
 	}
 
 	defer resp.Body.Close()

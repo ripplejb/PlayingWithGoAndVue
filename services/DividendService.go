@@ -3,19 +3,18 @@ package services
 import (
 	"PlayingWithGoAndVue/clients"
 	"PlayingWithGoAndVue/models"
-	"context"
 	"encoding/json"
 )
 
 type DividendService struct {
 }
 
-func (ds *DividendService) GetDividendsData(context context.Context, symbol string) (models.DividendsView, error) {
+func (ds *DividendService) GetDividendsData(symbol string) (models.DividendsView, error) {
 	var body []byte
 	var err error
 
 	client := clients.Client{}
-	if body, err = client.RestClientGet(context, "https://api.iextrading.com/1.0/stock/"+symbol+"/dividends/5y"); err != nil {
+	if body, err = client.RestClientGet("https://api.iextrading.com/1.0/stock/" + symbol + "/dividends/5y"); err != nil {
 		return models.DividendsView{}, err
 	}
 

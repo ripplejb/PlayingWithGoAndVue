@@ -2,25 +2,36 @@ package dataaccesslayer
 
 import (
 	"PlayingWithGoAndVue/models"
+	"cloud.google.com/go/datastore"
 	"context"
-	"google.golang.org/appengine/datastore"
 )
 
 type UserDB struct {
-	Context context.Context
+}
+
+func GetContextClient() (ctx context.Context, client *datastore.Client) {
+	ctx = context.Background()
+	client, err := datastore.NewClient(ctx, "mycloud-169422")
+	if err != nil {
+		panic(err)
+	}
+	return ctx, client
 }
 
 func (u *UserDB) Add(user *models.User) error {
-	key := datastore.NewIncompleteKey(u.Context, "User", nil)
-	if _, err := datastore.Put(u.Context, key, user); err != nil {
+	ctx, client := GetContextClient()
+	key := datastore.IncompleteKey("User", nil)
+	if _, err := client.Put(ctx, key, user); err != nil {
 		return err
 	}
 	return nil
 }
 
 func (u *UserDB) Get(username string) (models.User, error) {
+	ctx, client := GetContextClient()
+
 	q := datastore.NewQuery("User").Filter("Username =", username)
-	t := q.Run(u.Context)
+	t := client.Run(ctx, q)
 	var user models.User
 	_, err := t.Next(&user)
 	if err != nil {
