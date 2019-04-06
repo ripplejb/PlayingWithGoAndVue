@@ -13,7 +13,7 @@ func (rc *RoutingConfiguration) GetRouter() *mux.Router {
 	muxRouter := mux.NewRouter()
 	muxRouter.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("main/static"))))
 	muxRouter.HandleFunc("/favicon.ico", func(writer http.ResponseWriter, request *http.Request) {
-		http.ServeFile(writer, request, "/static/favicon.ico")
+		http.ServeFile(writer, request, "./main//static/favicon.ico")
 	})
 	muxRouter.HandleFunc("/", handlers.RootHandler).Methods("GET")
 	muxRouter.HandleFunc("/Earning", handlers.GetEarning).Methods("GET")
