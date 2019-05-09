@@ -33,9 +33,9 @@ func (lh *LoginHelper) SetSessionValues(w http.ResponseWriter, r *http.Request, 
 		return err
 	} else {
 		session.Values["user"] = userUI.Username
-		session.Save(r, w)
+		err := session.Save(r, w)
+		return err
 	}
-	return nil
 }
 
 func (lh *LoginHelper) RedirectIfLoggedIn(w http.ResponseWriter, r *http.Request) bool {
